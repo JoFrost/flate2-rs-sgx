@@ -9,8 +9,8 @@ This crate by default uses the `miniz_oxide` crate, a port of `miniz.c` to pure
 Rust. This crate also supports other [backends](#Backends), such as the widely
 available zlib library or the high-performance zlib-ng library.
 
-[![Original github repo]](https://github.com/rust-lang/flate2-rs)
-[![Rust SGX SDK]](https://github.com/apache/incubator-teaclave-sgx-sdk)
+[[Original github repo]](https://github.com/rust-lang/flate2-rs)
+[[Rust SGX SDK]](https://github.com/apache/incubator-teaclave-sgx-sdk)
 
 Supported formats:
 
