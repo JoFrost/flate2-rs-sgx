@@ -107,16 +107,21 @@
 #![allow(trivial_numeric_casts)]
 #![cfg_attr(test, deny(warnings))]
 
-#![cfg_attr(all(feature = "mesalock_sgx",
-                not(target_env = "sgx")), no_std)]
+#![cfg_attr(all(feature = "mesalock_sgx", not(target_env = "sgx")), no_std)]
 #![cfg_attr(all(target_env = "sgx", target_vendor = "mesalock"), feature(rustc_private))]
 
-#[cfg(all(feature = "std", target_env = "sgx"))]
-extern crate core;
-
-#[cfg(all(feature = "std", not(target_env = "sgx")))]
+#[cfg(all(feature = "mesalock_sgx", not(target_env = "sgx")))]
 #[macro_use]
 extern crate sgx_tstd as std;
+
+#[cfg(all(feature = "std", not(feature = "mesalock_sgx"), not(target_env = "sgx")))]
+#[macro_use]
+extern crate core;
+
+#[cfg(all(feature = "std", target_env = "sgx"))]
+#[macro_use]
+
+extern crate core;
 
 pub use crate::crc::{Crc, CrcReader, CrcWriter};
 pub use crate::gz::GzBuilder;
